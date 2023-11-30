@@ -1,29 +1,40 @@
 <script>
 export default {
-    name: "Card"
+    name: "Card",
+    props: {
+        name: String,
+        brewery_type: String,
+        city: String,
+        state_province: String,
+        country: String,
+        phone: String,
+        website_url: String,
+        street: String
+    }
 }
 </script>
 
 <template>
     <section>
-        <h2>Name</h2>
+        <h2>{{ name }}</h2>
         <div>
             <div class="column">
                 <h3>Dove siamo?</h3>
                 <div>
-                    Country, State province, City, Street
+                    {{ country }}, {{ state_province }}, {{ city }}, {{ street }}.
                 </div>
                 <h3>Come contattarci?</h3>
                 <div>
-                    Telefono : Phone
+                    Telefono : {{ phone }}
                 </div>
-                <h3>Sito web</h3>
-                <a href="Website URL">Name</a>
+                <h3>Sito web:</h3>
+                <a :href="website_url">{{ name }}</a>
             </div>
             <div class="column">
-                <h3>Un po' di storia</h3>
+                <h3>Un po' di storia:</h3>
                 <p>
-                    Name è un Brewery type birrificio situato a City. Lorem ipsum dolor, sit amet consectetur adipisicing
+                    {{ name }} è un {{ brewery_type }} birrificio situato a {{ city }}. Lorem ipsum dolor, sit amet
+                    consectetur adipisicing
                     elit. Dignissimos neque provident odio distinctio corrupti quas aperiam, maiores numquam voluptate,
                     nostrum aspernatur ea. Voluptas blanditiis ullam a accusamus, nemo facilis excepturi!
                 </p>
