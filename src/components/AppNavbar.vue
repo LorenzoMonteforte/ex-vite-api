@@ -24,7 +24,37 @@ export default {
         <option value="proprietor">Proprietor</option>
         <option value="closed">Closed</option>
     </select>
-    <button @click="$emit('callFather')">Cliccami</button>
+    <button @click="$emit('callFather')">Filtra</button>
 </template>
 
-<style scoped></style>
+<style scoped>
+select {
+    height: 30%;
+    width: 25%;
+    padding: 0 0.5rem;
+    border: none;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    color: white;
+    background-image: url("../assets/img/sfondo.jpg");
+}
+
+select>option {
+    color: brown;
+    background-color: burlywood;
+}
+
+button {
+    height: 30%;
+    padding: 0 0.5rem;
+    border: none;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    color: white;
+    background-image: url("../assets/img/sfondo.jpg");
+}
+
+select:focus {
+    outline: none;
+}
+</style>

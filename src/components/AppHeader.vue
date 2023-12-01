@@ -17,6 +17,9 @@ export default {
 <style scoped>
 header {
     height: 100px;
-    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../assets/img/sfondoHeader.jpg");
 }
 </style>
