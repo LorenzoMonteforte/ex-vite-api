@@ -1,18 +1,29 @@
 <script>
+import AppHeader from "./components/AppHeader.vue";
 import Card from "./components/Card.vue";
 import axios, { isCancel, AxiosError } from 'axios';
+import { store } from "./store";
 export default {
     components: {
+        AppHeader,
         Card
     },
     data() {
         return {
-            birrifici: []
+            birrifici: [],
+            store
         }
     },
     methods: {
         downloadAPI: function () {
-            axios.get("https://api.openbrewerydb.org/v1/breweries?by_country=ireland&per_page=10")
+            this.birrifici = [];
+            let url;
+            if (this.store.inputUser == "") {
+                url = "https://api.openbrewerydb.org/v1/breweries?by_country=ireland&per_page=10";
+            } else {
+                url = "https://api.openbrewerydb.org/v1/breweries?by_country=ireland&per_page=10&by_type=" + this.store.inputUser;
+            }
+            axios.get(url)
                 .then(response => {
                     for (let i = 0; i < response.data.length; i++) {
                         this.birrifici.push({
@@ -36,6 +47,7 @@ export default {
 </script>
 
 <template>
+    <AppHeader @callFather="downloadAPI()" />
     <Card v-for="birrificio in birrifici" :name="birrificio.name" :brewery_type="birrificio.brewery_type"
         :city="birrificio.city" :state_province="birrificio.state_province" :country="birrificio.country"
         :phone="birrificio.phone" :website_url="birrificio.website_url" :street="birrificio.street" />
