@@ -2,6 +2,7 @@
 import { store } from "../store";
 export default {
     name: "AppNavbar",
+    emits: ["callFather"],
     data() {
         return {
             store
